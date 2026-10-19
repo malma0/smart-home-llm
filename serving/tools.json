@@ -1,0 +1,114 @@
+[
+ {
+  "type": "function",
+  "function": {
+   "name": "get_home_status",
+   "description": "The house now, room by room: lights, sockets, ventilation, temperature, humidity, CO2. Call it for every question about the house.",
+   "parameters": {
+    "type": "object",
+    "properties": {
+     "room": {
+      "type": [
+       "string",
+       "null"
+      ],
+      "description": "Only this room (its name in any grammatical form). Omit for the whole house."
+     }
+    }
+   }
+  }
+ },
+ {
+  "type": "function",
+  "function": {
+   "name": "control_devices",
+   "description": "Turn a device type on/off in a room: light (brightness_pct), socket, ventilation. room in any form ('на кухне') or 'all'.",
+   "parameters": {
+    "type": "object",
+    "properties": {
+     "room": {
+      "type": "string"
+     },
+     "device": {
+      "type": "string",
+      "enum": [
+       "light",
+       "socket",
+       "ventilation"
+      ]
+     },
+     "action": {
+      "type": "string",
+      "enum": [
+       "on",
+       "off"
+      ]
+     },
+     "brightness_pct": {
+      "type": [
+       "integer",
+       "null"
+      ],
+      "minimum": 1,
+      "maximum": 100
+     },
+     "position": {
+      "type": [
+       "integer",
+       "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+     },
+     "temperature": {
+      "type": [
+       "number",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "room",
+     "device",
+     "action"
+    ]
+   }
+  }
+ },
+ {
+  "type": "function",
+  "function": {
+   "name": "set_room_norm",
+   "description": "Set the temperature a room should keep, or change it relatively ('теплее', 'прохладнее').",
+   "parameters": {
+    "type": "object",
+    "properties": {
+     "room": {
+      "type": "string"
+     },
+     "temperature": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "co2_max": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "humidity_min": {
+      "type": [
+       "number",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "room"
+    ]
+   }
+  }
+ }
+]

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.log
+finetune/mlflow.db
+finetune/mlartifacts/
+finetune/runs/
+models/
+wakeword/data/
+wakeword/models/
+wakeword/negatives/
+data/heard/

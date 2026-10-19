@@ -1,0 +1,11 @@
+# Prometheus for the home model service's metrics (serving/):
+#   docker compose --profile monitoring up -d      -> http://localhost:9090
+# It scrapes the service on the host (port 8090), or the serving container.
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: home-model
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["host.docker.internal:8090"]
